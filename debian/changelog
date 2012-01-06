@@ -1,0 +1,7 @@
+shared-mime-info (0.60-4) unstable; urgency=low
+
+  * Initial Release.
+  * Git: unmodified/shared-mime-info
+  * Tag: shared-mime-info_0.60-4
+
+ -- Seokkyu Jang <seokkyu.jang@samsung.com>  Wed, 07 Dec 2011 12:56:02 +0900
