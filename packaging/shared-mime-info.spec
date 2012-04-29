@@ -3,7 +3,7 @@ Summary:    FreeDesktop.org shared MIME database and spec
 Version:    0.60
 Release:    1
 Group:      misc
-License:    TO_ADD
+License:    GPLv2
 Source0:    shared-mime-info-0.60.tar.gz
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
