@@ -5,6 +5,7 @@ Release:    1
 Group:      misc
 License:    GPLv2
 Source0:    shared-mime-info-0.60.tar.gz
+Source1001: packaging/shared-mime-info.manifest 
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  intltool >= 0.35
@@ -28,6 +29,7 @@ FreeDesktop.org shared MIME database and spec
 
 
 %build
+cp %{SOURCE1001} .
 
 %configure --disable-static
 make %{?jobs:-j%jobs}
@@ -43,6 +45,7 @@ rm -rf %{buildroot}
 
 
 %files
+%manifest shared-mime-info.manifest
 %defattr(-,root,root,-)
 /usr/bin/update-mime-database
 /usr/share/*
