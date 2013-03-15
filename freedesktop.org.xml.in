@@ -4113,6 +4113,8 @@ command to generate the output files.
     <glob pattern="*.txt"/>
     <glob pattern="*.asc"/>
     <glob pattern="*,v"/>
+    <!-- requested by zzoon.ko of media server part -->
+    <glob pattern="*.ldp"/>
   </mime-type>
   <mime-type type="application/rdf+xml">
     <_comment>RDF file</_comment>
