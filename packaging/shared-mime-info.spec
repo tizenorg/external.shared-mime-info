@@ -1,7 +1,7 @@
 Name:       shared-mime-info
 Summary:    FreeDesktop.org shared MIME database and spec
 Version:    0.60
-Release:    5
+Release:    6
 Group:      misc
 License:    GPLv2
 Source0:    shared-mime-info-0.60.tar.gz
