@@ -1,7 +1,7 @@
 Name:       shared-mime-info
 Summary:    FreeDesktop.org shared MIME database and spec
 Version:    0.60
-Release:    9
+Release:    10
 Group:      misc
 License:    GPLv2
 Source0:    shared-mime-info-0.60.tar.gz
@@ -29,12 +29,12 @@ make %{?jobs:-j%jobs}
 %install
 rm -rf %{buildroot}
 %make_install
-
-
-
+mkdir -p %{buildroot}/usr/share/license
+install COPYING %{buildroot}/usr/share/license/%{name}
 
 %files
 %defattr(-,root,root,-)
 /usr/bin/update-mime-database
 /usr/share/*
 %manifest shared-mime-info.manifest
+/usr/share/license/%{name}
