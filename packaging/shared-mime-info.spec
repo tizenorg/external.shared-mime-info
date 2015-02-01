@@ -1,7 +1,7 @@
 Name:       shared-mime-info
 Summary:    FreeDesktop.org shared MIME database and spec
 Version:    0.60
-Release:    13
+Release:    26
 Group:      misc
 License:    GPLv2
 Source0:    shared-mime-info-0.60.tar.gz
@@ -32,6 +32,11 @@ rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/license
 install  COPYING %{buildroot}/usr/share/license/%{name}
 
+%posttrans
+#remove xml files for update-mime-database
+find /usr/share/mime -name *.xml -exec rm {} \;
+for NAME in `find /usr/share/mime -mindepth 1 -type d`; do rmdir $NAME; done
+
 %files
 %defattr(-,root,root,-)
 /usr/bin/update-mime-database
@@ -39,6 +44,39 @@ install  COPYING %{buildroot}/usr/share/license/%{name}
 %manifest shared-mime-info.manifest
 
 %changelog
+* Wed Jun 4 2014 - Hyungdeuk Kim <hd3.kim@samsung.com>
+- Remove xml files that is not used anymore after image is created
+
+* Tue May 27 2014 - Hyungdeuk Kim <hd3.kim@samsung.com>
+- Rollback `remove po files`
+- Light resource will be handled by mic script
+
+* Fri May 23 2014 - Hyungdeuk Kim <hd3.kim@samsung.com>
+- Remove unused pc file for removing pkg-config requires dependency
+
+* Mon Apr 28 2014 - Hyungdeuk Kim <hd3.kim@samsung.com>
+- Remove po files because of pkg size
+
+* Wed Nov 20 2013 - Hyungdeuk Kim <hd3.kim@samsung.com>
+- Add new mime type for S Note file(*.snb)
+- Requested by bg47.kim
+- Diable "0x00~1ba" match data for video/mpeg
+- Issue : *.sub file is recognized as video/mpeg
+- Requested by s/w verification
+
+* Wed Nov 6 2013 - Hyungdeuk Kim <hd3.kim@samsung.com>
+- Add pmd extenstion file to unknown mime type
+- Add qcp extenstion file to unknown mime type
+- Requested by s/w verification
+
+* Wed Nov 6 2013 - Hyungdeuk Kim <hd3.kim@samsung.com>
+- change RIFF string magic priority of audio for recognizing mime type of RIFF as video
+- Requested by s/w verification
+
+* Sat Oct 5 2013 - Hyungdeuk Kim <hd3.kim@samsung.com>
+- Merge latest share mime info(ver 1.2) related ts ext file
+- Requested by media server
+
 * Thu Jun 20 2013 - Hyungdeuk Kim <hd3.kim@samsung.com>
 - Merge latest shared mime info(ver 1.1) related audio/aac
 

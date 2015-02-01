@@ -32,16 +32,10 @@ EXTRA_DIST = \
 	README				\
 	HACKING				\
 	$(man_MANS)			\
-	shared-mime-info.pc.in		\
 	po/shared-mime-info.pot
 
 CLEANFILES = freedesktop.org.xml po/stamp-it
 DISTCLEANFILES = intltool-extract intltool-merge intltool-update
-
-pkgconfigdir = $(datadir)/pkgconfig
-pkgconfig_DATA = shared-mime-info.pc
-
-$(pkgconfig_DATA): config.status
 
 @INTLTOOL_XML_RULE@
 @INTLTOOL_DESKTOP_RULE@

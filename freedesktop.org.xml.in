@@ -140,6 +140,10 @@ command to generate the output files.
     <glob pattern="*.bin"/>
     <!-- requested by zzoon.ko of media server part -->
     <glob pattern="*.ldp"/>
+    <!-- requested by s/w verification -->
+    <glob pattern="*.pmd"/>
+    <!-- requested by s/w verification -->
+    <glob pattern="*.qcp"/>
   </mime-type>
   <mime-type type="application/oda">
     <_comment>ODA document</_comment>
@@ -1965,9 +1969,14 @@ command to generate the output files.
     <generic-icon name="package-x-generic"/>
     <glob pattern="*.lhz"/>
   </mime-type>
-  <mime-type type="application/x-linguist">
+  <mime-type type="text/vnd.trolltech.linguist">
     <_comment>message catalog</_comment>
+    <sub-class-of type="application/xml"/>
+    <magic>
+      <match type="string" value="&lt;TS" offset="0:256"/>
+    </magic>
     <glob pattern="*.ts"/>
+    <alias type="application/x-linguist"/>
   </mime-type>
   <mime-type type="application/x-lyx">
     <_comment>LyX document</_comment>
@@ -3167,10 +3176,8 @@ command to generate the output files.
   </mime-type>
   <mime-type type="audio/x-riff">
     <_comment>RIFF audio</_comment>
-    <!-- need to be lower prio than avi -->
-    <magic priority="45">
-      <match type="string" value="RIFF" offset="0"/>
-    </magic>
+    <!-- Removed RIFF match string requested by s/w verification.
+         Mime for RIFF(esp avi file) need to be video. -->
   </mime-type>
   <mime-type type="audio/x-s3m">
     <_comment>Scream Tracker 3 audio</_comment>
@@ -3869,9 +3876,9 @@ command to generate the output files.
   <mime-type type="application/x-navi-animation">
     <_comment>Windows animated cursor</_comment>
     <magic priority="50">
-      <match type="string" value="RIFF" offset="0">
+        <!-- Removed RIFF match string requested by s/w verification.
+             Mime for RIFF(esp avi file) need to be video. -->
         <match type="string" value="ACON" offset="8"/>
-      </match>
     </magic>
     <glob pattern="*.ani"/>
   </mime-type>
@@ -4794,6 +4801,24 @@ command to generate the output files.
   <mime-type type="video/isivideo">
     <_comment>ISI video</_comment>
   </mime-type>
+  <mime-type type="video/mp2t">
+    <_comment>MPEG-2 transport stream</_comment>
+    <acronym>MPEG-2 TS</acronym>
+    <expanded-acronym>Moving Picture Experts Group 2 Transport Stream</expanded-acronym>
+    <magic priority="50">
+      <match type="big32" value="0x47400010" mask="0xff4000df" offset="0"/>
+    </magic>
+    <glob pattern="*.m2t"/>
+    <glob pattern="*.m2ts"/>
+    <glob pattern="*.ts"/>
+    <glob pattern="*.mts"/>
+    <glob pattern="*.cpi"/>
+    <glob pattern="*.clpi"/>
+    <glob pattern="*.mpl"/>
+    <glob pattern="*.mpls"/>
+    <glob pattern="*.bdm"/>
+    <glob pattern="*.bdmv"/>
+  </mime-type>
   <mime-type type="video/mpeg">
     <_comment>MPEG video</_comment>
     <acronym>MPEG</acronym>
@@ -4801,14 +4826,14 @@ command to generate the output files.
     <magic priority="50">
       <match type="string" value="\x47\x3f\xff\x10" offset="0"/>
       <match type="big32" value="0x000001b3" offset="0"/>
-      <match type="big32" value="0x000001ba" offset="0"/>
+      <!--Issue : *.sub file is recognized as video/mpeg because of below match info. Below match info is commented requested by s/w verification-->
+      <!--match type="big32" value="0x000001ba" offset="0"/-->
     </magic>
     <glob pattern="*.mpeg"/>
     <glob pattern="*.mpg"/>
     <glob pattern="*.mp2"/>
     <glob pattern="*.mpe"/>
     <glob pattern="*.vob"/>
-    <glob pattern="*.m2t"/>
   </mime-type>
   <mime-type type="video/quicktime">
     <_comment>QuickTime video</_comment>
@@ -5129,6 +5154,12 @@ command to generate the output files.
       <treematch path="autorun.exe" type="file" executable="true" />
       <treematch path="autorun.inf" type="file" />
     </treemagic>
+  </mime-type>
+
+  <!-- New mime type for S Note requested by bg47.kim -->
+  <mime-type type="application/snb">
+    <_comment>Samsung S Note file</_comment>
+    <glob pattern="*.snb"/>
   </mime-type>
 
 </mime-info>
