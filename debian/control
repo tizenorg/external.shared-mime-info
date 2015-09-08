@@ -1,8 +1,8 @@
 Source: shared-mime-info
 Section: misc
 Priority: optional
-Maintainer: SaeNa Kim <saina.kim@smasung.com> 
-Uploaders: Sebastian Dröge <slomo@debian.org>
+Maintainer: SaeNa Kim <saina.kim@smasung.com> , Hyungdeuk Kim <hd3.kim@samsung.com>
+Uploaders: Sebastian Dröge <slomo@debian.org>, Hyungdeuk Kim <hd3.kim@samsung.com>
 Build-Depends: cdbs (>= 0.4.35),
                debhelper (>= 5),
                autotools-dev,
